@@ -43,8 +43,8 @@ let b = '1';
 
 //prompt(); hàm prompt hiện popup kèm input để nhập giá trị:
 a = prompt('Nhập số a:');
-b = prompt('Nhập số b:');
-c = prompt('Nhập số c:');
+// b = prompt('Nhập số b:');
+// c = prompt('Nhập số c:');
 /* Giải phương trình bậc 2: ax^2 + bx + c = 0 (với a,b,c là tham số truyền vào hàm giaiPhuongTrinhBac2)*/
 function giaiPhuongTrinhBac2(a,b,c) {
     //kiểm tra a,b,c == 0 hay không;
@@ -72,5 +72,18 @@ function giaiPhuongTrinhBac2(a,b,c) {
         }
     }
 }
+// giaiPhuongTrinhBac2(a,b,c);
 
-giaiPhuongTrinhBac2(a,b,c);
+//kiểm tra số chẵn
+function ktSoChan(a) {
+    // full if else
+    // if (a%2 == 0) {
+    //     alert('A là số chẵn');
+    // } else {
+    //     alert('A là số lẻ');
+    // }
+
+    //toán tử ba ngôi: điều kiện ? giá trị nếu điều kiện đúng : giá trị nếu điều kiện sai
+    alert(a%2 == 0 ? 'A là số chẵn' : 'A là số lẻ');
+}
+ktSoChan(a);
