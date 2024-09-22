@@ -8,10 +8,16 @@
     <!-- Viết code js trong html -->
     <!-- C1: Nhúng file js từ bên ngoài -->
     <!-- <script src="index.js"></script> -->
-    <script src="switch.js"></script>
+    <!-- <script src="switch.js"></script> -->
+    <script src="event.js"></script>
 </head>
 <body>
-    <h1>MD19304</h1>
+    <!-- Có 2 cách để xử lý sự kiện trong html
+      C1: viết trực tiếp code js ở trong sự kiện
+      C2: gọi hàm trong sự kiện (RECOMMEND)
+    -->
+    <h1 onclick="testClick()">MD19304</h1>
+    <button onmouseover="countClick()">Bấm vào đây</button>
     <!-- C2: viết trực tiếp code javascript trong html -->
     <!-- <script>
       var name = 'MD19304';
