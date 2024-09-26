@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <script>
+    </script>
+</head>
+<body>
+    <form>
+        <div>
+            <label for="">Username</label>
+            <input type="text" name="username">
+        </div>
+        <div>
+            <label for="">Password</label>
+            <input id="pass" type="text" name="password">
+            <input type="checkbox" onchange="showPass()" value="Show password">
+        </div>
+    </form>
+    
+
+    <div class="pp">
+        <p id="p1">P1</p>
+        <p class="pp">P2</p>
+        <p class="pp">P3</p>
+    </div>
+
+    <button onclick="intervalAdd()">THêm phần tử</button>
+    <button onclick="stopAdd()">Dừng thêm</button>
+
+    <script>
+        let node = document.getElementById('p1');
+        node.innerHTML = '<b> ABCXYZ </b>';
+        // innerHTML: sẽ chứa cả thẻ html
+        // innerText: sẽ chỉ lấy phần nội dung văn bản
+        
+        //getElementById: trả về duy nhất 1 element hoặc null
+        //getElementByClassName/getElementByTagName: trả về 1 mảng các element thỏa mãn
+        
+        //childNodes: liệt kê danh sách các node con
+        //firstChild: phần tử con đầu tiên
+        //lastChild: phần tử con cuối cùng
+        let divNode = document.getElementsByClassName('pp')[0];
+        let firstChild = divNode.firstChild;
+        let lastChild = divNode.lastChild;
+        //nextSibling: phần tử anh em liền sau
+        //previousSibling: phần tử anh em liền trước nó
+        
+        function showPass() { 
+            //thay đổi type của thẻ input: password/text
+            //B1: truy suất phần tử input password
+            let inputPass = document.getElementById('pass');
+            //B2: thay đổi type của input password<->text
+            if (inputPass.type == 'text') { // nếu đang là text thì chuyển thành 'password'
+                inputPass.type = 'password';
+            } else { //ngược lại thì chuyển thành 'text';
+                inputPass.type = 'text';
+            }
+        }
+
+        let myInterval;
+        //khai báo hàm intervalAdd
+        function intervalAdd() {
+            myInterval = setInterval('addElement()', 2000);
+        }
+        function stopAdd() {
+            clearInterval(myInterval); //clearInterval: dừng vòng lặp interval
+        }
+
+        function addElement() {
+            //thêm 1 phần tử mới vào trong thẻ div
+            //B1: truy xuất phần tử div cần thêm
+            let divNode = document.getElementsByClassName('pp')[0];
+            //B2: thêm phần tử vào trong thẻ div
+            //document.createElement: tạo 1 phần tử mới
+            //nodeCha.appendChild: thêm phần tử mới vào trong node cha
+            let newElement = document.createElement('p'); //tạo phần tử <p>
+            let content = document.createTextNode('MD19304'); //tạo một textNode mới
+            newElement.appendChild(content); //thêm textNode vào trong newElement
+            divNode.appendChild(newElement); //thêm newElement vào trong divNode
+        }
+    </script>
+</body>
+</html>
