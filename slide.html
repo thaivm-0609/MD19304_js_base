@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide show</title>
+</head>
+<body>
+    <img id="image" style="height: 200px;width: 400px;" src="" alt="">
+    <button onclick="prev()">Prev</button>
+    <button onclick="next()">Next</button>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script>
+        window.onload = function () {
+            loadAnh();
+        }
+
+        let intervalId;
+        document.getElementById('start').onclick = function () {
+            intervalId = setInterval('changeImage()', 500);
+        }
+
+        document.getElementById('stop').addEventListener('click', function () {
+            clearInterval(intervalId);
+        })
+
+        let index = 0;
+        //B1: tao danh sach ảnh
+        const listAnh = [
+            './img/42f3f16f6caf46202517e4bb4ebac5af.jpg',
+            './img/294fb6e4-0a5d-4ff7-9a56-4aace3b60830.png',
+            './img/1920x1080-23689-A.C.-MilanPaolo-Maldini-HD-Wallpaper.png'
+        ];
+        function loadAnh() {
+            document.getElementById('image').src = listAnh[index];         
+        }
+        function prev() {
+            index --;
+            if (index < 0) {
+                index = listAnh.length - 1;
+            }
+            loadAnh();
+        } 
+        function next() {
+            index ++;
+            if (index == listAnh.length) {
+                index = 0;
+            }
+            loadAnh();
+        }
+        function changeImage() {
+            index ++;
+            if (index == listAnh.length) { //nếu index bằng số lượng phần tử trong mảng -> gán = 0
+                index = 0;
+            }
+            loadAnh();
+        }
+    </script>
+</body>
+</html>

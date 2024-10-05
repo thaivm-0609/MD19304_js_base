@@ -1,0 +1,9 @@
+.newClass {
+    background-color: red;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.hide {
+    display: none;
+}

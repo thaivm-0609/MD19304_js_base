@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Object Model</title>
-    <script>
-    </script>
+    <link rel="stylesheet" href="dom.css">
 </head>
 <body>
-    <form>
+    <img style="height: 100px;" src="./img/1920x1080-23689-A.C.-MilanPaolo-Maldini-HD-Wallpaper.png" id="image" alt="">
+    <form id="form">
         <div>
             <label for="">Username</label>
             <input type="text" name="username">
@@ -21,7 +21,7 @@
     </form>
     
 
-    <div class="pp">
+    <div class="pp newClass">
         <p id="p1">P1</p>
         <p class="pp">P2</p>
         <p class="pp">P3</p>
@@ -29,8 +29,26 @@
 
     <button onclick="intervalAdd()">THêm phần tử</button>
     <button onclick="stopAdd()">Dừng thêm</button>
-
+    <button onclick="changeColor()">Change bg color</button>
+    <button id="showButton">Show/hide</button>
     <script>
+        window.onload = function () {
+            //Có 2 cách để bắt sự kiện trong javascript:
+            //C1: addEventListener('event', function);
+            // document.getElementById('showButton').addEventListener('click', changeDisplay);
+            //C2: gán sự kiện onClick vào cho element:
+            // document.getElementById('showButton').onclick = changeDisplay;
+        
+            //truy suất phần tử img:
+            const img = document.getElementById('image');
+            img.addEventListener('mouseout', function () {
+                img.src = './img/294fb6e4-0a5d-4ff7-9a56-4aace3b60830.png';
+            });
+            img.addEventListener('mouseover', function () {
+                img.src = './img/1920x1080-23689-A.C.-MilanPaolo-Maldini-HD-Wallpaper.png';
+            })
+        }
+
         let node = document.getElementById('p1');
         node.innerHTML = '<b> ABCXYZ </b>';
         // innerHTML: sẽ chứa cả thẻ html
@@ -48,6 +66,26 @@
         //nextSibling: phần tử anh em liền sau
         //previousSibling: phần tử anh em liền trước nó
         
+        function changeDisplay() {
+            console.log(1);
+            document.getElementById('form').classList.toggle('hide');
+        }
+
+        function changeColor() {
+            //B1: truy suất element
+            const element = document.getElementsByClassName('pp')[0];
+            //B2: thay đổi thuộc tính css
+            //C2.1: truy suất trực tiếp thuộc tính style
+            // element.style.backgroundColor = 'red';
+            // element.style.fontSize = '50px';
+            // element.style.fontWeight = 'bold';
+
+            //C2.2: thêm class vào cho element
+            // element.classList.add('newClass'); //thêm class
+            // element.classList.remove('newClass'); //xóa class
+            // element.classList.toggle('newClass'); //bật/tắt
+        }
+
         function showPass() { 
             //thay đổi type của thẻ input: password/text
             //B1: truy suất phần tử input password
