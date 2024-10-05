@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đèn giao thông</title>
+    <style>
+        .light {
+            width: 100px;
+            height: 100px;
+            border: solid;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="red" class="light"></div>
+    <div id="yellow" class="light"></div>
+    <div id="green" class="light"></div>
+
+    <script>
+        window.onload = function () {
+            changeBgColor();
+            setInterval('changeIndex()', 2000);
+        }
+        let color = ['red', 'yellow', 'green'];
+        let index = 0;
+        function changeBgColor() {
+            document.getElementById(color[index]).style.backgroundColor = color[index];
+        }
+        function changeIndex() {
+            //đổi tất cả đèn thành màu trắng
+            //Array.from(htmlCollection): chuyển collection thành mảng
+            Array.from(document.getElementsByClassName('light')).forEach((item) => {
+                item.style.backgroundColor = 'white';
+            });
+
+            //đổi màu đèn
+            index ++;
+            if (index == color.length) {
+                index = 0;
+            }
+            changeBgColor();
+        }
+    </script>
+</body>
+</html>
