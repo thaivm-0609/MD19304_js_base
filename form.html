@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate form</title>
+</head>
+<body>
+    <form>
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="name" id="name" onchange="validateName()">
+            <p id="errorName" style="color: red;"></p>
+        </div>
+        <div>
+            <label for="">Type</label>
+            <select name="type" id="type" onchange="changeType()">
+                <option value="1">Loại 1</option>
+                <option value="2">Loại 2</option>
+                <option value="3">Loại 3</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Price</label>
+            <input type="number" name="price" id="price" value="10000" disabled>
+        </div>
+        <div>
+            <label for="">Quantity</label>
+            <input type="number" name="quantity" id="quantity" onchange="changeQuantity()">
+        </div>
+        <div>
+            <label for="">Total</label>
+            <input type="number" name="total" id="total" disabled>
+        </div>
+    </form>
+    <script>
+        function validateName() { //validate input
+            let inputName = event.target.value; //lấy giá trị người dùng nhập vào ô input
+            if (inputName == '') { //nếu ô input rỗng -> báo lỗi ko đc để trống
+                document.getElementById('errorName').textContent = 'Không được để trống';
+            } else if (inputName.length < 6) { //nhập ko đủ độ dài
+                document.getElementById('errorName').textContent = 'Tối thiểu 6 ký tự';
+            } else {
+                document.getElementById('errorName').textContent = '';
+            }
+        }
+
+        function changeType() { 
+            let inputType = event.target.value;
+            //gán lại giá trị cho price theo type
+            if (inputType == '1') {
+                document.getElementById('price').value = 10000;
+            } else if (inputType == '2') {
+                document.getElementById('price').value = 50000;
+            } else {
+                document.getElementById('price').value = 100000;
+            }
+            summary();
+        }
+
+        function changeQuantity() {
+            let inputQuantity = event.target.value; //lấy dữ liệu trong ô số lượng
+            summary();
+        }
+
+        function summary() {
+            let quantity = document.getElementById('quantity').value;
+            let price = document.getElementById('price').value;
+            document.getElementById('total').value = quantity*price;
+        }
+
+    </script>
+</body>
+</html>
