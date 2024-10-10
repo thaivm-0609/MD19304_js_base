@@ -29,6 +29,23 @@
             <input type="number" name="quantity" id="quantity" onchange="changeQuantity()">
         </div>
         <div>
+            <label for="">Place</label>
+            <!-- <select name="place" id="place" onchange="changePlace()">
+                <option value="1">Nội thành</option>
+                <option value="2">Ngoại thành</option>
+            </select> -->
+            <div>
+                <input type="radio" id="place" name="place" value="1" onchange="changePlace()">
+                <span>Nội Thành</span>
+                <input type="radio" id="place" name="place" value="2" onchange="changePlace()">
+                <span>Ngoại thành</span>
+            </div>
+        </div>
+        <div>
+            <label for="">Ship</label>
+            <input type="number" name="ship" id="ship" disabled>
+        </div>
+        <div>
             <label for="">Total</label>
             <input type="number" name="total" id="total" disabled>
         </div>
@@ -63,10 +80,22 @@
             summary();
         }
 
+        function changePlace() {
+            let inputPlace = event.target.value;
+            if (inputPlace == '1') {
+                document.getElementById('ship').value = 15000;
+            } else {
+                document.getElementById('ship').value = 30000;
+            }
+            summary();
+        }
+
         function summary() {
-            let quantity = document.getElementById('quantity').value;
-            let price = document.getElementById('price').value;
-            document.getElementById('total').value = quantity*price;
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let price = parseInt(document.getElementById('price').value);
+            let ship = parseInt(document.getElementById('ship').value);
+
+            document.getElementById('total').value = quantity*price + ship;
         }
 
     </script>
